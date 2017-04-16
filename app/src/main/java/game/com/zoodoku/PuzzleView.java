@@ -25,4 +25,15 @@ public class PuzzleView extends View {
     private int selY;
     private final Rect selRect=new Rect();
 
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        width=w / 9f;               //Dividing current screen width 9 times; because, 9 rows and 9 columns in sudoku
+        height=h / 9f;               //Dividing current screen height 9 times
+        getRect(selX,selY,selRect);
+        Log.d(TAG, "onSizeChanged: width " + width + ", height " + height);
+        super.onSizeChanged(w, h, oldw, oldh);
+    }
+    public void getRect(int x,int y, Rect rect){
+        rect.set((int) (x*width),(int) (y*height),(int) (x*width+width),(int) (y*height+height));
+    }
 }
