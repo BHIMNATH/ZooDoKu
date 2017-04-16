@@ -36,4 +36,11 @@ public class PuzzleView extends View {
     public void getRect(int x,int y, Rect rect){
         rect.set((int) (x*width),(int) (y*height),(int) (x*width+width),(int) (y*height+height));
     }
+    @Override
+    protected void onDraw(Canvas canvas) {
+        Paint background = new Paint();
+        background.setColor(getResources().getColor(R.color.puzzle_background));
+        canvas.drawRect(0,0,getWidth(),getHeight(),background);
+        super.onDraw(canvas);
+    }
 }
